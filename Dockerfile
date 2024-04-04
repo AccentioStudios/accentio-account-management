@@ -1,6 +1,7 @@
 ARG NODE_VERSION=19.9.0
 
 FROM node:${NODE_VERSION}-slim as base
+LABEL authors="Accentio Studios"
 
 ARG PORT=3000
 
