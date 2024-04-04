@@ -59,13 +59,13 @@ export default defineEventHandler(async (event) => {
   }
 
   if (url.pathname === pathnames.signOut) {
-    await logto.signOut(postLogoutRedirectUri);
+    await logto.signOut(new URL(postLogoutRedirectUri, url).href);
     return;
   }
 
   if (url.pathname === pathnames.callback) {
     await logto.handleSignInCallback(url.href);
-    await sendRedirect(event, "/", 302);
+    await sendRedirect(event, postCallbackRedirectUri, 200);
     return;
   }
 

@@ -30,10 +30,9 @@ export default defineNuxtConfig({
       appSecret: process.env.AUTH_APP_SECRET,
       cookieEncryptionKey: process.env.AUTH_COOKIE_ENCRYPTION_KEY,
       endpoint: process.env.AUTH_ENDPOINT,
-
       postLogoutRedirectUri: process.env.AUTH_POST_LOGOUT_REDIRECT_URI,
       postCallbackRedirectUri: process.env.AUTH_POST_CALLBACK_REDIRECT_URI,
-      fetchUserInfo: process.env.AUTH_FETCH_USER_INFO_URL,
+      fetchUserInfo: false,
       scopes: process.env.AUTH_SCOPES?.split(" ") || [
         "openid",
         "profile",
