@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
 
   if (url.pathname === pathnames.callback) {
     await logto.handleSignInCallback(url.href);
-    await sendRedirect(event, postCallbackRedirectUri, 302);
+    await sendRedirect(event, "/", 302);
     return;
   }
 
