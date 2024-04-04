@@ -22,6 +22,7 @@ export default defineEventHandler(async (event) => {
     pathnames,
     postCallbackRedirectUri,
     postLogoutRedirectUri,
+    callbackRedirectUri,
     ...clientConfig
   } = logtoConfig;
 
@@ -42,7 +43,7 @@ export default defineEventHandler(async (event) => {
 
   const logto = new LogtoClient(clientConfig, {
     navigate: async (url) => {
-      await sendRedirect(event, url, 302);
+      await sendRedirect(event, url, 200);
     },
     storage,
   });
@@ -54,12 +55,14 @@ export default defineEventHandler(async (event) => {
   const m2mLogto = new M2MClient(logtoConfig, m2mDiscover.metadata);
 
   if (url.pathname === pathnames.signIn) {
-    await logto.signIn(new URL(pathnames.callback, url).href);
+    await logto.signIn(
+      callbackRedirectUri || new URL(pathnames.callback, url).href
+    );
     return;
   }
 
   if (url.pathname === pathnames.signOut) {
-    await logto.signOut(new URL(postLogoutRedirectUri, url).href);
+    await logto.signOut(postLogoutRedirectUri || new URL("/", url).href);
     return;
   }
 
