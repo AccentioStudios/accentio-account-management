@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  padding: var(--spacing-md, 8px) var(--spacing-lg, 12px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+
+  border-radius: var(--radius-md, 8px);
+  background: transparent;
+
+  /* Shadows/shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  color: var(--on-surface-dark-text-color);
+  border: 1px solid var(--component-colors-stroke-secundary, #3D4D71);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  text-align: center;
+  cursor: pointer;
+}
+
+.button.primary {
+  background: var(--primary-colors-accentio-blue-variant-200, #89D4F0);
+  color: var(--background-color-space-blue-900, #0E0B1E);
+  border: 1px solid var(--primary-colors-accentio-blue-variant-200, #89D4F0);
+}

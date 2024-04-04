@@ -1,0 +1,7 @@
+version: "3"
+services:
+  accentio-account-management:
+    build:
+      context: .
+    ports:
+      - "3088:3000"

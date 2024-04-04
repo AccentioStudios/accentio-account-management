@@ -1,0 +1,12 @@
+.flex-centered-gap-8 {
+    display: flex;
+    padding: var(--spacing-none, 0px);
+    align-items: center;
+    gap: var(--spacing-md, 8px);
+  }
+  .flex-justify-between-centered {
+    display: flex;
+    padding: var(--spacing-none, 0px);
+    justify-content: space-between;
+    align-items: center;
+  }

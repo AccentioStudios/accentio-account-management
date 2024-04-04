@@ -1,0 +1,35 @@
+.badge {
+  display: flex;
+  padding: var(--spacing-xxs, 2px) var(--spacing-md, 8px) var(--spacing-xxs, 2px) var(--spacing-sm, 6px);
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid var(--component-colors-utility-gray-200);
+  background: var(--component-colors-utility-gray-50);
+
+  color: var(--component-colors-utility-gray-700);
+  text-align: center;
+}
+
+.badge.success {
+  border: 1px solid var(--component-colors-utility-success-200, #085D3A);
+  background: var(--component-colors-utility-success-50, #053321);
+  color: var(--component-colors-utility-success-700, #75E0A7);
+}
+.badge.dot::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--component-colors-utility-gray-700);
+}
+
+.badge.success.dot::before {
+  background: var(--component-colors-utility-success-700);
+}
+
+.badge.dot {
+  padding-left: calc(var(--spacing-sm));
+}
