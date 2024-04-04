@@ -55,14 +55,13 @@ export default defineEventHandler(async (event) => {
   const m2mLogto = new M2MClient(logtoConfig, m2mDiscover.metadata);
 
   if (url.pathname === pathnames.signIn) {
-    await logto.signIn(
-      callbackRedirectUri || new URL(pathnames.callback, url).href
-    );
+    console.log("signIn", callbackRedirectUri);
+    await logto.signIn(callbackRedirectUri);
     return;
   }
 
   if (url.pathname === pathnames.signOut) {
-    await logto.signOut(postLogoutRedirectUri || new URL("/", url).href);
+    await logto.signOut(postLogoutRedirectUri);
     return;
   }
 
