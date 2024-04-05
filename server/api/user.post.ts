@@ -1,11 +1,10 @@
 import LogtoClient from "@logto/node";
 import { useLogtoClient } from "~/composables/use-logto-client";
 import useLogtoUser from "~/composables/use-logto-user";
-import { M2MClient, User } from "../middleware/1.logto.global";
+import { M2MClient } from "../middleware/1.logto.global";
+import { User } from "~/utils/constants";
 
 export default defineEventHandler(async (event) => {
-  // get cookie
-  const cookie = getCookie(event, "accentio-auth.session") || null;
   const logto = event.context.logtoClient as LogtoClient | undefined;
   const user = event.context.logtoUser;
   const m2mLogto = event.context.m2mLogtoClient as M2MClient | undefined;
@@ -21,7 +20,7 @@ export default defineEventHandler(async (event) => {
   if (await logto?.isAuthenticated()) {
     const changedUser = {
       id: user?.sub,
-      primaryEmail: body.email.toLowerCase(),
+      primaryEmail: body.primaryEmail.toLowerCase(),
       name: body.name,
       username: body.username,
     } as User;
@@ -30,7 +29,7 @@ export default defineEventHandler(async (event) => {
     if (update) {
       return {
         status: 200,
-        body: "User updated",
+        body: update,
       };
     }
     setResponseStatus(event, 500);

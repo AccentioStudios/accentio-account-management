@@ -6,11 +6,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/**": { static: true },
+    "/**": { static: false },
     "/api/**": { static: false, cache: false },
-  },
-  nitro: {
-    preset: "vercel",
   },
   modules: [
     "nuxt-headlessui",
@@ -40,7 +37,7 @@ export default defineNuxtConfig({
       postLogoutRedirectUri: process.env.AUTH_POST_LOGOUT_REDIRECT_URI,
       postCallbackRedirectUri: process.env.AUTH_POST_CALLBACK_REDIRECT_URI,
       callbackRedirectUri: process.env.AUTH_CALLBACK_REDIRECT_URI,
-      fetchUserInfo: false,
+      fetchUserInfo: true,
       scopes: process.env.AUTH_SCOPES?.split(" ") || [
         "openid",
         "profile",

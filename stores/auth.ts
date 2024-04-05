@@ -1,5 +1,6 @@
 import type { UserInfoResponse } from "@logto/browser";
 import { defineStore } from "pinia";
+import type { User } from "~/utils/constants";
 
 export const useAuthStore = defineStore("authStore", {
   state: () => ({
@@ -7,7 +8,7 @@ export const useAuthStore = defineStore("authStore", {
     userData: {
       id: "",
       name: "",
-      email: "",
+      primaryEmail: "",
       picture: "",
       username: "",
     },
@@ -21,12 +22,12 @@ export const useAuthStore = defineStore("authStore", {
     setLoadingState(state: boolean) {
       this.loading = state;
     },
-    async storeUserData(data: UserInfoResponse | undefined) {
+    async storeUserData(data: User | undefined) {
       const wtf = data;
       this.userData = {
-        id: data?.sub || "",
+        id: data?.id || "",
         name: data?.name || "",
-        email: data?.email || "",
+        primaryEmail: data?.primaryEmail || "",
         picture: data?.picture || "",
         username: data?.username || "",
       };

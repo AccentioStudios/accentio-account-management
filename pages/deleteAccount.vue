@@ -13,8 +13,8 @@ const confirmationText = ref("");
 
 onMounted(() => {
   authStore.setLoadingState(false);
-  if(authStore.userData.email) {
-    confirmationText.value = authStore.userData.email;
+  if(authStore.userData.primaryEmail) {
+    confirmationText.value = authStore.userData.primaryEmail;
   } else {
     confirmationText.value = authStore.userData.username;
   }

@@ -72,7 +72,7 @@ async function submit(e: any) {
                     mt-5">
                       <img :src="authStore.userData!.picture" alt="User Avatar" class="w-[36px] h-[36px]">
                     </div>
-                    <Gravatar v-else alt="User Avatar" :email="authStore.userData.email" class="bg-on-surface-high rounded-full w-[36p] h-[36px] mt-2 mb-4"/>
+                    <Gravatar v-else alt="User Avatar" :email="authStore.userData.primaryEmail" class="bg-on-surface-high rounded-full w-[36p] h-[36px] mt-2 mb-4"/>
                     <p class="text-on-surface-high text-lg font-semibold ml-4">Hola, {{ authStore.userData.name }}</p>
                   </div>
 

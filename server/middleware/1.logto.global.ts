@@ -9,6 +9,7 @@ import {
 } from "h3";
 
 import { useRuntimeConfig } from "#imports";
+import { User } from "~/utils/constants";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
@@ -78,7 +79,9 @@ export default defineEventHandler(async (event) => {
 
   // eslint-disable-next-line @silverhand/fp/no-mutation
   event.context.logtoUser = (await logto.isAuthenticated())
-    ? await (fetchUserInfo ? logto.fetchUserInfo() : logto.getIdTokenClaims())
+    ? await (fetchUserInfo
+        ? await logto.fetchUserInfo()
+        : logto.getIdTokenClaims())
     : undefined;
 });
 
@@ -246,7 +249,14 @@ export class M2MClient {
 
     if (request.ok) {
       this.fetchTokenTries = 0;
-      return true;
+      const userResponse = await request.json();
+      return {
+        id: userResponse.id,
+        primaryEmail: userResponse.primaryEmail,
+        name: userResponse.name,
+        username: userResponse.username,
+        picture: userResponse.picture,
+      } as User;
     } else {
       if (request.status === 401 || request.status === 403) {
         if (this.fetchTokenTries <= this.fetchTokenMaxTries) {
@@ -263,12 +273,4 @@ export class M2MClient {
 type M2MClientStorage = {
   accessToken: string;
   refreshToken: string;
-};
-
-export type User = {
-  id: string;
-  primaryEmail: string;
-  name: string;
-  username: string;
-  picture: string;
 };
