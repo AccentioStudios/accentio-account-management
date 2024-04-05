@@ -5,6 +5,13 @@ export default defineNuxtConfig({
       name: "page",
     },
   },
+  routeRules: {
+    "/**": { static: true },
+    "/api/**": { static: false, cache: false },
+  },
+  nitro: {
+    preset: "vercel",
+  },
   modules: [
     "nuxt-headlessui",
     "@nuxt/image",
