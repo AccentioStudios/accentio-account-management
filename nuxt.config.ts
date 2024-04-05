@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/**": { static: false },
+    "/**": { static: false, cache: false },
     "/api/**": { static: false, cache: false },
   },
   nitro: {
