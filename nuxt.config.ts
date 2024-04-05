@@ -6,10 +6,11 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/**": { static: false, cache: false },
+    "/**": { static: true, cache: false },
     "/api/**": { static: false, cache: false },
   },
   nitro: {
+    noExternals: false,
     preset: "vercel",
   },
   modules: [
