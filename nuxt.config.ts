@@ -9,10 +9,6 @@ export default defineNuxtConfig({
     "/**": { static: false, cache: false },
     "/api/**": { static: false, cache: false },
   },
-  nitro: {
-    noExternals: false,
-    preset: "vercel",
-  },
   modules: [
     "nuxt-headlessui",
     "@nuxt/image",

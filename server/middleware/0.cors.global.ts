@@ -4,7 +4,6 @@ export default defineEventHandler(async (event) => {
     "Access-Control-Allow-Methods": "*",
     "Access-Control-Allow-Headers": "*",
     "Cache-Control": "s-maxage=1",
-    Age: "0",
   };
   setHeaders(event, headers);
 });
