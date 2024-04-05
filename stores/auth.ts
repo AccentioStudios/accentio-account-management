@@ -37,6 +37,7 @@ export const useAuthStore = defineStore("authStore", {
         method: "POST",
         headers: useRequestHeaders(["cookie"]),
         body: JSON.stringify(currentData),
+        cache: "no-cache",
       });
       return response;
     },
@@ -45,6 +46,7 @@ export const useAuthStore = defineStore("authStore", {
       return $fetch(`/api/verifyPassword`, {
         method: "POST",
         headers: useRequestHeaders(["cookie"]),
+        cache: "no-cache",
         body: JSON.stringify({
           password,
         }),
@@ -56,6 +58,7 @@ export const useAuthStore = defineStore("authStore", {
         method: "DELETE",
         headers: useRequestHeaders(["cookie"]),
         body: JSON.stringify({ verificationText }),
+        cache: "no-cache",
       });
     },
 
@@ -75,6 +78,7 @@ export const useAuthStore = defineStore("authStore", {
       return $fetch(`/api/password`, {
         method: "POST",
         headers: useRequestHeaders(["cookie"]),
+        cache: "no-cache",
         body: JSON.stringify({
           password: currentData.password,
         }),
