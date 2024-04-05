@@ -1,5 +1,6 @@
 
 <script setup lang="ts">
+import type LogtoClient from '@logto/browser';
 import { ref, onMounted } from 'vue';
 
 const authStore = useAuthStore();
@@ -19,9 +20,13 @@ onMounted(() => {
 async function saveChanges(e: any) {
   loading.value = true;
   e.preventDefault();
-  await authStore.postUserChanges(currentData.value);
+  const postChanges = await authStore.postUserChanges(currentData.value);
+  if (postChanges) {
+    const logto = useLogtoClient() as LogtoClient;
+    const user = await logto?.fetchUserInfo();
+    await authStore.storeUserData(user);
+  }
   loading.value = false;
-  
   window.location.reload();
 }
 
