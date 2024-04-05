@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type LogtoClient from '@logto/node';
 import { useAuthStore } from './stores/auth';
 useHead({
   htmlAttrs: {
@@ -8,8 +9,13 @@ useHead({
 
 const authStore = useAuthStore();
 authStore.setLoadingState(true);
-const user = useLogtoUser();
-authStore.storeUserData(user);
+const cachedUser = useLogtoUser();
+if (!cachedUser) {
+  navigateTo('/sign-in', { external: true });
+}
+const logto = useLogtoClient() as LogtoClient;
+const userInfo = await logto?.fetchUserInfo();
+authStore.storeUserData(userInfo);
 authStore.setLoadingState(false);
 
 </script>
