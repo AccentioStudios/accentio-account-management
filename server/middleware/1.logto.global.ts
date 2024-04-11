@@ -56,6 +56,11 @@ export default defineEventHandler(async (event) => {
 
   if (url.pathname === pathnames.signIn) {
     console.log("signIn");
+    if (await logto.isAuthenticated()) {
+      console.log("isAuthenticated");
+      await sendRedirect(event, "/");
+      return;
+    }
     await logto.signIn(new URL(pathnames.callback, url).href);
     return;
   }
@@ -67,7 +72,7 @@ export default defineEventHandler(async (event) => {
 
   if (url.pathname === pathnames.callback) {
     await logto.handleSignInCallback(url.href);
-    await sendRedirect(event, "/", 302);
+    await sendRedirect(event, "/?logged=1");
     return;
   }
 
