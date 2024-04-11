@@ -55,6 +55,8 @@ export default defineEventHandler(async (event) => {
         body: "Unauthorized",
       };
     }
-    await logto.signIn(new URL(pathnames.callback, url).href);
+
+    sendRedirect(event, pathnames.signIn);
+    // await logto.signIn(new URL(pathnames.callback, url).href);
   }
 });
