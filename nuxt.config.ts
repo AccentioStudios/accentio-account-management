@@ -5,26 +5,26 @@ export default defineNuxtConfig({
       name: "page",
     },
   },
-  routeRules: {
-    "/**": { static: true, cache: false },
-    // disable vercel cache for api routes
-    "/api/**": { static: false },
+  // routeRules: {
+  //   "/**": { static: true, cache: false },
+  //   // disable vercel cache for api routes
+  //   "/api/**": { static: false },
 
-    // disable vercel cache for auth routes
-    "/sign-in": { static: false },
-    "/sign-out": { static: false },
-    "/callback": { static: false },
+  //   // disable vercel cache for auth routes
+  //   "/sign-in": { static: false },
+  //   "/sign-out": { static: false },
+  //   "/callback": { static: false },
 
-    // disable vercel cache for auth routes
-    "/api/verifyPassword": { static: false },
-    "/api/user": { static: false },
+  //   // disable vercel cache for auth routes
+  //   "/api/verifyPassword": { static: false },
+  //   "/api/user": { static: false },
 
-    // disable cache for Vercel
-    "/_nuxt/**": { static: false, cache: false },
-    "/_content/**": { static: false, cache: false },
-    "/_loading/**": { static: false, cache: false },
-    "/_middleware/**": { static: false, cache: false },
-  },
+  //   // disable cache for Vercel
+  //   "/_nuxt/**": { static: false, cache: false },
+  //   "/_content/**": { static: false, cache: false },
+  //   "/_loading/**": { static: false, cache: false },
+  //   "/_middleware/**": { static: false, cache: false },
+  // },
   modules: [
     "nuxt-headlessui",
     "@nuxt/image",
