@@ -25,12 +25,6 @@ export default defineNuxtConfig({
     "/_loading/**": { static: false, cache: false },
     "/_middleware/**": { static: false, cache: false },
   },
-  nitro: {
-    noExternals: false,
-    preset: "vercel",
-  },
-  // disable cache for all routes
-
   modules: [
     "nuxt-headlessui",
     "@nuxt/image",
