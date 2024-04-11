@@ -12,7 +12,7 @@ const authStore = useAuthStore();
 authStore.setLoadingState(true);
 const logto = useLogtoClient();
 const user = useLogtoUser();
-console.log(user);
+
 authStore.storeUserData({
   id: user?.sub,
   primaryEmail: user?.email,

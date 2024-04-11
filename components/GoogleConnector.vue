@@ -42,7 +42,7 @@ export default {
         // check if popup is closed
         if(googlePopUp?.closed) {
           clearInterval(checkPopup);
-          console.log('closed');
+  
           this.checkAuthentication();
         }
       }, 1000);

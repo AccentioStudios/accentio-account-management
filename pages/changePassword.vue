@@ -71,7 +71,7 @@ async function saveChanges(e: any) {
      navigateTo("/");
     }
   } catch(e) {
-    console.error(e);
+
   }
   loading.value = false;
 }

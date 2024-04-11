@@ -20,7 +20,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     });
   }
   const isExpired = cookieExpirationDate < new Date();
-  //   console.log("isExpired", isExpired);
+
   if (isExpired === false) {
     console.log("Continue...");
     return;

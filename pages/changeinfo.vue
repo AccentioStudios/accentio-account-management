@@ -23,7 +23,7 @@ async function saveChanges(e: any) {
   e.preventDefault();
   const request = await authStore.postUserChanges(currentData.value);
   if(request.status === 200) {
-    console.log('User data updated');
+
     await authStore.storeUserData(request.body as User);
     await navigateTo('/changeinfo', {external: true});
   }
