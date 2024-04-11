@@ -27,6 +27,8 @@ export default defineEventHandler(async (event) => {
   } = logtoConfig;
 
   const url = getRequestURL(event);
+  console.log("AYLMAO: ", url.pathname);
+
   const storage = new CookieStorage(
     {
       cookieKey: cookieName,
@@ -71,6 +73,8 @@ export default defineEventHandler(async (event) => {
   }
 
   if (url.pathname === pathnames.callback) {
+    console.log("callback", url.href);
+
     await logto.handleSignInCallback(url.href);
     await sendRedirect(event, "/?logged=1");
     return;
