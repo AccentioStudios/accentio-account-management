@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
   }
 
   if (url.pathname === pathnames.signOut) {
-    await logto.signOut(new URL("/", url).href);
+    await logto.signOut(postLogoutRedirectUri);
     return;
   }
 
