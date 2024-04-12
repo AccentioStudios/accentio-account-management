@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/api/callback"
-  to = "/api/callback"
-  status = 302
-  force = false
