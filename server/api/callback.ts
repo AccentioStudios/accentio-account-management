@@ -19,7 +19,6 @@ export default defineEventHandler(async (event) => {
     console.error(e);
     console.log("Error callback");
     console.info("Error in callback", e);
-    throw e;
-    // await sendRedirect(event, "/sign-out?error=1");
+    await sendRedirect(event, "/error?error=1");
   }
 });

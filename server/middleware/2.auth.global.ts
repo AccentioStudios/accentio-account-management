@@ -29,6 +29,10 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
+  if (url.pathname.startsWith("/error")) {
+    return;
+  }
+
   const storage = new CookieStorage(
     {
       cookieKey: cookieName,
