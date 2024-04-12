@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/api/callback"
+  to = "/api/callback"
+  status = 302
+  force = false
+  query = {
+    code = ":code",
+    state = ":state"
+  }
