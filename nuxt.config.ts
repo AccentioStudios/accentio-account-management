@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     // disable vercel cache for auth routes
     "/sign-in": { static: false },
     "/sign-out": { static: false },
-    "/callback": { static: false },
 
     // // disable vercel cache for auth routes
     // "/api/verifyPassword": { static: false },

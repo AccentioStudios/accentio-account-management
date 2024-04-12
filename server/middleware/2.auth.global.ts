@@ -18,12 +18,17 @@ export default defineEventHandler(async (event) => {
     cookieEncryptionKey,
     fetchUserInfo,
     pathnames,
-    postCallbackRedirectUri,
+    redirectUri,
     postLogoutRedirectUri,
     ...clientConfig
   } = logtoConfig;
 
   const url = getRequestURL(event);
+
+  if (url.pathname.startsWith("/api/callback")) {
+    return;
+  }
+
   const storage = new CookieStorage(
     {
       cookieKey: cookieName,

@@ -72,14 +72,6 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
-  if (url.pathname === pathnames.callback) {
-    console.log("callback", url.href);
-
-    await logto.handleSignInCallback(url.href);
-    await sendRedirect(event, "/?logged=1");
-    return;
-  }
-
   // eslint-disable-next-line @silverhand/fp/no-mutation
   event.context.logtoClient = logto;
   await m2mLogto.setM2MToken();
