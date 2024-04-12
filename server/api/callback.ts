@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
   try {
     const url = getRequestURL(event);
     const queryParams = new URLSearchParams(url.search || "");
+    console.log("callback full url ", url.href);
     console.log("query callback url", queryParams);
 
     await logto?.handleSignInCallback(url.href);
