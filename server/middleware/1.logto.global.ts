@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
     cookieEncryptionKey,
     fetchUserInfo,
     pathnames,
-    postCallbackRedirectUri,
+    redirectUri,
     postLogoutRedirectUri,
     ...clientConfig
   } = logtoConfig;
@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
       await sendRedirect(event, "/");
       return;
     }
-    await logto.signIn(new URL(pathnames.callback, url).href);
+    await logto.signIn(redirectUri);
     return;
   }
 

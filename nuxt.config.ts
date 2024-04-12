@@ -52,6 +52,7 @@ export default defineNuxtConfig({
       endpoint: process.env.AUTH_ENDPOINT,
       postLogoutRedirectUri: process.env.AUTH_POST_LOGOUT_REDIRECT_URI,
       fetchUserInfo: true,
+      redirectUri: process.env.AUTH_REDIRECT_URI,
       scopes: process.env.AUTH_SCOPES?.split(" ") || [
         "openid",
         "profile",
