@@ -33,6 +33,10 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
+  if (url.pathname.startsWith("/__nuxt_error")) {
+    return;
+  }
+
   const storage = new CookieStorage(
     {
       cookieKey: cookieName,
