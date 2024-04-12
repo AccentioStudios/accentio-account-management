@@ -63,11 +63,13 @@ export default defineEventHandler(async (event) => {
       await sendRedirect(event, "/");
       return;
     }
+    console.log("Redirect to signIn...");
     await logto.signIn(redirectUri);
     return;
   }
 
   if (url.pathname === pathnames.signOut) {
+    console.log("Sign out...");
     await logto.signOut(postLogoutRedirectUri);
     return;
   }

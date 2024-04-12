@@ -1,14 +1,13 @@
 import LogtoClient from "@logto/node";
 
 export default defineEventHandler(async (event) => {
+  console.log("Callback event handler");
   const logto = event.context.logtoClient as LogtoClient | undefined;
 
   if (!logto) {
     throw new Error("Logto client not found in event context");
   }
   try {
-    console.log("callback api");
-
     const url = getRequestURL(event);
     const queryParams = new URLSearchParams(url.search || "");
     console.log("query", queryParams);
@@ -18,6 +17,9 @@ export default defineEventHandler(async (event) => {
     return;
   } catch (e) {
     console.error(e);
-    await sendRedirect(event, "/sign-out?error=1");
+    console.log("Error callback");
+    console.info("Error in callback", e);
+    throw e;
+    // await sendRedirect(event, "/sign-out?error=1");
   }
 });
