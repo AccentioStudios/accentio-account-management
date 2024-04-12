@@ -5,9 +5,6 @@ export default defineNuxtConfig({
       name: "page",
     },
   },
-  routeRules: {
-    "/callback": { redirect: "/api/callback" },
-  },
   // routeRules: {
   //   "/**": { static: true, cache: false },
   //   // disable vercel cache for api routes
