@@ -1,8 +1,10 @@
 version: "3"
 services:
-  accentio-account-management:
+  accounts-management:
+    container_name: accounts
     build:
       context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     env_file:

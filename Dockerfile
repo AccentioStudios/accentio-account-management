@@ -1,32 +1,38 @@
-ARG NODE_VERSION=19.9.0
+# use node 16 alpine image as build image
+FROM node:19-alpine as builder
 
-FROM node:${NODE_VERSION}-slim as base
-LABEL authors="Accentio Studios"
+# create work directory in app folder
+WORKDIR /app
 
-ARG PORT=3000
+# install required packages for node image
+RUN apk --no-cache add openssh g++ make python3 git
 
-ENV NODE_ENV=production
+# copy over package.json files
+COPY package.json /app/
+COPY package-lock.json /app/
 
-WORKDIR /src
+# install all depencies
+RUN npm ci && npm cache clean --force
 
-# Build
-FROM base as build
+# copy over all files to the work directory
+ADD . /app
 
-COPY --link package.json package-lock.json ./
-RUN npm install --production=false
-
-COPY --link . .
-
+# build the project
 RUN npm run build
-RUN npm prune
 
-# Run
-FROM base
+# start final image
+FROM node:19-alpine
 
-ENV PORT=$PORT
 
-COPY --from=build /src/.output /src/.output
-# Optional, only needed if you rely on unbundled dependencies
-# COPY --from=build /src/node_modules /src/node_modules
+WORKDIR /app
 
-CMD [ "node", ".output/server/index.mjs" ]
+# copy over build files from builder step
+COPY --from=builder /app/.output  app/.output
+COPY --from=builder /app/.nuxt  app/.nuxt
+
+# expose the host and port 3000 to the server
+ENV HOST 0.0.0.0
+EXPOSE 3000
+
+# run the build project with node
+ENTRYPOINT ["node", ".output/server/index.mjs"]
