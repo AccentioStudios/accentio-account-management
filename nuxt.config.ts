@@ -5,6 +5,7 @@ export default defineNuxtConfig({
       name: "page",
     },
   },
+
   // routeRules: {
   //   "/**": { static: true, cache: false },
   //   // disable vercel cache for api routes
