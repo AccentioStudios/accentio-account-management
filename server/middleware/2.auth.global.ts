@@ -69,7 +69,7 @@ export default defineEventHandler(async (event) => {
       };
     }
 
-    sendRedirect(event, pathnames.signIn);
+    await sendRedirect(event, pathnames.signIn);
     // await logto.signIn(new URL(pathnames.callback, url).href);
   }
 });
