@@ -1,5 +1,4 @@
-# use node 16 alpine image as build image
-FROM node:19-alpine as builder
+FROM node:20-alpine as builder
 
 # create work directory in app folder
 WORKDIR /app
