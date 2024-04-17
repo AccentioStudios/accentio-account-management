@@ -13,8 +13,9 @@ export default defineEventHandler(async (event) => {
     console.log("callback full url ", url.href);
     console.log("query callback url", queryParams);
 
-    await logto?.handleSignInCallback(url.href);
-    await sendRedirect(event, "/?logged=1");
+    const wtf = await logto?.handleSignInCallback(url.href);
+    console.log("wtf", wtf);
+    await sendRedirect(event, "https://accounts.accentiostudios.com/?logged=1");
     return;
   } catch (e) {
     console.error(e);
